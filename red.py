@@ -7,7 +7,7 @@ from Sigmoid import Sigmoid
 
 
 class Red:
-    def __init__(self, dim_input=2, capas=1, activacion=["sigmoid"], cantidad=[2], dim_output = 1):
+    def __init__(self, dim_input=2, activacion=["sigmoid"], cantidad=[2], dim_output = 1):
         dimension = dim_input
         self.numero_salidas = dim_output
         self.capas = []
@@ -18,7 +18,7 @@ class Red:
         self.errores_por_clase = []
         lista_anterior = []
         total_neuronas = 0
-        for i in range(capas):
+        for i in range(len(cantidad)):
             if (activacion[i] == "sigmoid"):
                 neurona = Sigmoid
             else:

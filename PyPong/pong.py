@@ -50,9 +50,10 @@ def run(player,angulo):
 
     player1_score = 0
     player2_score = 0
-
+    abajo = None
+    arriba = None
     counter = 0
-
+    respuestas = 0
     while True:
 
         if ( (paddle2.buscado ==None or paddle2.buscado) and ball.rect.x > WINDOW_WIDTH - 60):
@@ -61,7 +62,7 @@ def run(player,angulo):
                 ball.change_direction(change=True)
             else:
                 ball.change_direction()
-            ball.speed += 1
+            #ball.speed += 1
             paddle1.buscado = True
             paddle2.buscado = False
 
@@ -70,7 +71,7 @@ def run(player,angulo):
 
         ball.move()
         # calcular si se mueve
-        paddle1.move(player.movimiento([paddle1.y/600.0,ball.x/1024.0,ball.y/600.0,ball.speed/10.0,ball.direccion]))
+        paddle1.move(player.movimiento([paddle1.y/600.0,ball.x/1024.0,ball.y/600.0,ball.direccion]))
         if(ball.colision(paddle1)):
             player.agregarDistancia(abs(ball.y - paddle1.y))
             player.agregarRespuesta()
@@ -91,6 +92,8 @@ def run(player,angulo):
             break
         elif player2_score == SCORE_GANAR:
             player2_win = True
+            break
+        if respuestas == 2:
             break
 
         counter += 1

@@ -71,7 +71,7 @@ def run(player,angulo):
     respuestas = 0
     while True:
 
-        clock.tick(240)
+        clock.tick(50)
 
         if ( (paddle2.buscado ==None or paddle2.buscado) and ball.rect.x > WINDOW_WIDTH - 60):
             # esto porque jugador 2 no esta activado
@@ -79,7 +79,7 @@ def run(player,angulo):
                 ball.change_direction(change=True)
             else:
                 ball.change_direction()
-            ball.speed += 1
+            #ball.speed += 1
             paddle1.buscado = True
             paddle2.buscado = False
 
@@ -126,7 +126,7 @@ def run(player,angulo):
         ball.move()
         # calcular si se mueve
         paddle1.move(
-            player.movimiento([paddle1.y / 600.0, ball.x / 1024.0, ball.y / 600.0, ball.speed / 10.0, ball.direccion]))
+            player.movimiento([paddle1.y / 600.0, ball.x / 1024.0, ball.y / 600.0, ball.direccion]))
         if (ball.colision(paddle1)):
             respuestas += 1
             paddle2.buscado = True
